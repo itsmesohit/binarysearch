@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Finding Square Root of a number using Binary Search........-->
+
+// Hi!, This is me sohit and it's my solution sheet for the Given problem.
+
+
+double squareRoot(int n, int p=4){
+    int s=0;
+    int e=n-1;
+    double ans = -1;
+    while(s<=e){
+        int mid = (e+s)>>1;
+        if(mid*mid == n){
+            return mid;
+        } else if(mid*mid> n){
+            e= mid-1;
+        } else {
+            s = mid+1;
+            ans = mid;
+        }
+    }
+    double inc = 0.1;
+    for(int i=1; i<=p; i++){
+        while(ans*ans <=n){
+            ans =ans + inc;
+        }
+        ans = ans -inc;
+        inc = inc /10;
+    }
+    
+    return ans;
+}
+int main() {
+	int t,p;
+	cin>>t>>p;
+	cout<<squareRoot(t)<<endl;
+	return 0;
+}
